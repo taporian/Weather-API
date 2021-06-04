@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       name: "chris",
-      name2:"hasan"
+      
       
       
     };
@@ -28,9 +28,7 @@ class App extends Component {
         <SayHi />
         <SayHello color="black" name={this.state.name} />
         <Search handleInput={this.handleInputChange} />
-        <SayHi />
-        <SayHello color="black" name={this.state.name2} />
-        <Search handleInput={this.handleInputChange} />
+        
         
       </div>
       
