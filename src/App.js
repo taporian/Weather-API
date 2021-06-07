@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import storm from "../src/img/weather-icons/storm.svg"; 
 import clear from "../src/img/weather-icons/clear.svg"; 
+import Search from "../src/components/Search";
+import Weather from "../src/components/WeatherItem"
+
 
 import fakeWeatherData from "./fakeWeatherData.json";
 
@@ -14,7 +17,7 @@ class App extends Component {
     };
   }
 
-  handleInputChange = value => {
+  handleInput = value => {
     this.setState({ name: value });
   };
 
@@ -25,8 +28,11 @@ class App extends Component {
        
        <header className="app_header">
          <nav>
-           <input type="text"  placeholder="Type in a city name"></input>
-           <button type="submit">FIND WEATHER</button>
+           <Search  handleInput={this.handleInput}/>
+
+           <Weather />
+           
+           
          </nav>
        </header>
 
@@ -37,7 +43,7 @@ class App extends Component {
         <div className="app__main">
           <div class="imagee"> <img src={clear}  /> </div>
           <h2>Temperature 12<span>&#176;</span> to 13<span>&#8451;</span></h2>
-          <p><span style={{fontWeight:"bold" , marginRight:"1rem"}}>Humidty</span> 78%  <span style = {{fontWeight:"bold" , margin:"0 1rem"}}>Pressure</span> 1000.8</p>
+          <p><span style={{fontWeight:"bold" , marginRight:"1rem"}}>Humidity</span> 78%  <span style = {{fontWeight:"bold" , margin:"0 1rem"}}>Pressure</span> 1000.8</p>
         </div>
 
         {/* -----------Ul------------ */} 

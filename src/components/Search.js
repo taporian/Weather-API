@@ -10,7 +10,7 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        {this.state.input}
+        {/* {this.state.input} */}
         <input
           type="text"
           id="input-name"
@@ -23,7 +23,7 @@ class Search extends React.Component {
             this.props.handleInput(this.state.input);
           }}
         >
-          Say Hello
+          Search a City
         </button>
       </div>
     );
