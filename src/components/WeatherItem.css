@@ -1,0 +1,12 @@
+.res-grid {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+  }
+  .wea-ther {
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    list-style: none;
+  }

@@ -8,6 +8,7 @@ class Search extends React.Component {
   };
 
   render() {
+    
     return (
       <div>
         {/* {this.state.input} */}
@@ -21,12 +22,15 @@ class Search extends React.Component {
         <button
           onClick={event => {
             this.props.handleInput(this.state.input);
+
           }}
         >
           Search a City
         </button>
       </div>
+      
     );
+    
   }
 }
 export default Search;

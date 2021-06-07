@@ -1,14 +1,31 @@
+
 import React, { Component } from "react";
 
-import storm from "../src/img/weather-icons/storm.svg"; 
-import clear from "../src/img/weather-icons/clear.svg"; 
+
+ 
+ 
 import Search from "../src/components/Search";
 import Weather from "../src/components/WeatherItem"
 import sayHi, {SayHello} from "./components/WeatherItem"
+import Temprature from "./components/Temprature"
 
 import FakeWeather from  './fakeWeatherData.json';
 
+
+
 import "./App.css";
+
+
+
+const checkforwheather=()=>{
+  fetch("http://api.openweathermap.org/data/2.5/forecast?q=London&cnt=8&units=metric&appid=1c8fd00f3175ad6533e188b48cfd370f")
+            .then(respone => { 
+                return respone.json();
+                })
+                .then(data => {
+                  console.log(data)
+                })
+};
 
 class App extends Component {
   constructor(props) {
@@ -25,78 +42,28 @@ class App extends Component {
   render() {
     return (
       <div className="app">
+        
        {/* ---------Header-------------- */} 
        
        <header className="app_header">
+         
          <nav>
            
            <Search  handleInput={this.handleInput}/>
            <SayHello color="black" name={this.state.name} />
-
-           <Weather />
-           
-           
+    
          </nav>
        </header>
-
+       <Temprature />
+       <Weather />
        {/* ---------Main-------------- */} 
 
        <main>
-         
-        <div className="app__main">
-          <div class="imagee"> <img src={clear}  /> </div>
-          <h2>Temperature {Math.floor(FakeWeather.list[0].main.temp - 273.15)}<span>&#176;</span> to {Math.floor(FakeWeather.list[1].main.temp - 273.15)}<span>&#8451;</span></h2>
-          <p><span style={{fontWeight:"bold" , marginRight:"1rem"}}>Humidity</span> 78%  <span style = {{fontWeight:"bold" , margin:"0 1rem"}}>Pressure</span> 1000.8</p>
-        </div>
+       
 
         {/* -----------Ul------------ */} 
         <div  >
-          <ul className="wea-ther">
-            
-            <li>
-              <div className="res-grid"><h3>21:00</h3>
-                 <img src={storm} />
-                 <h3>{Math.floor(FakeWeather.list[2].main.temp - 273.15)}<span>&#8451;</span></h3></div>
-             </li>
-
-            <li>
-              <div className="res-grid"><h3>21:00</h3>
-                 <img src={storm} />
-                 <h3>{Math.floor(FakeWeather.list[3].main.temp - 273.15)}<span>&#8451;</span></h3></div>
-            </li>
-
-            <li>
-              <div className="res-grid"><h3>21:00</h3>
-              <img src={storm} /> 
-                 <h3>{Math.floor(FakeWeather.list[4].main.temp - 273.15)}<span>&#8451;</span></h3></div>
-            </li>
-
-            <li>
-              <div className="res-grid"><h3>21:00</h3>
-              <img src={storm} /> 
-                 <h3>{Math.floor(FakeWeather.list[5].main.temp - 273.15)}<span>&#8451;</span></h3></div>
-            </li>
-
-            <li>
-              <div className="res-grid"><h3>21:00</h3>
-              <img src={storm} /> 
-                 <h3>{Math.floor(FakeWeather.list[5].main.temp - 273.15)}<span>&#8451;</span></h3></div>
-            </li>
-
-            <li>
-              <div className="res-grid"><h3>21:00</h3>
-              <img src={storm} /> 
-                 <h3>{Math.floor(FakeWeather.list[4].main.temp - 273.15)}<span>&#8451;</span></h3></div>
-            </li>
-
-            <li>
-              <div className="res-grid"><h3>21:00</h3>
-              <img src={storm} /> 
-                 <h3>{Math.floor(FakeWeather.list[3].main.temp - 273.15)}<span>&#8451;</span></h3></div>
-            </li>
-           
           
-          </ul>
         </div>
        </main>
         
