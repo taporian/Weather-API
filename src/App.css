@@ -52,6 +52,12 @@ input:focus {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.imagee{
+  width: 100px;
+  height: 100px;
+}
+
 .wea-ther {
   padding: 20px;
   display: flex;
