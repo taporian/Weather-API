@@ -49,7 +49,7 @@ export default class WeatherItem extends Component {
     <li>
       <div className="res-grid"><h3>21:00</h3>
       <img src={storm} /> 
-         <h3>{Math.floor(FakeWeather.list[3].main.temp - 273.15)}<span>&#8451;</span></h3></div>
+         <h3>{this.props.city}<span>&#8451;</span></h3></div>
     </li>
    
   
@@ -62,7 +62,7 @@ export class SayHello extends Component {
   render() {
     return (
       <div style={{ color: this.props.color }}>
-         {this.props.name}
+         {this.props.city}
       </div>
       
     );

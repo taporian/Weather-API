@@ -55,13 +55,7 @@ input:focus {
 
 
 
-.wea-ther {
-  padding: 20px;
-  display: flex;
-  justify-content: space-evenly;
-  margin: 0;
-  list-style: none;
-}
+
 /*------------------Responsive-------------------------*/
 
 @media only screen and (max-width: 600px) {
@@ -69,11 +63,7 @@ input:focus {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-  .res-grid {
-    align-items: center;
-    justify-content: center;
-    display: grid;
-  }
+  
   nav {
     display: flex;
     justify-content: center;

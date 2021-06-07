@@ -14,30 +14,42 @@ import FakeWeather from  './fakeWeatherData.json';
 
 
 import "./App.css";
+import WeatherItem from "../src/components/WeatherItem";
 
 
 
-const checkforwheather=()=>{
-  fetch("http://api.openweathermap.org/data/2.5/forecast?q=London&cnt=8&units=metric&appid=1c8fd00f3175ad6533e188b48cfd370f")
-            .then(respone => { 
-                return respone.json();
-                })
-                .then(data => {
-                  console.log(data)
-                })
-};
+// const checkforwheather=()=>{
+//   fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=8&units=metric&appid=1c8fd00f3175ad6533e188b48cfd370f`)
+//             .then(respone => { 
+//                 return respone.json();
+//                 })
+//                 .then(data => {
+//                   console.log(data)
+//                 })
+// };
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ""
+      city: "",
+      data: []
     };
   }
 
   handleInput = value => {
-    this.setState({ name: value });
+    this.setState({ city: value });
+
+    fetch('http://api.openweathermap.org/data/2.5/forecast?q='+ this.state.city +'&cnt=8&units=metric&appid=1c8fd00f3175ad6533e188b48cfd370f')
+      .then(res => res.json())
+      .then(json => this.setState.data({ data: json }));
   };
+  
+  componentDidMount() {
+    fetch('http://api.openweathermap.org/data/2.5/forecast?q=London&cnt=8&units=metric&appid=1c8fd00f3175ad6533e188b48cfd370f')
+      .then(res => res.json())
+      .then(json => console.log(json));
+  }
 
   render() {
     return (
@@ -50,12 +62,12 @@ class App extends Component {
          <nav>
            
            <Search  handleInput={this.handleInput}/>
-           <SayHello color="black" name={this.state.name} />
-    
+           <SayHello color="black" city={this.state.city} />
+     
          </nav>
        </header>
        <Temprature />
-       <Weather />
+       <WeatherItem data={this.state.data}/>
        {/* ---------Main-------------- */} 
 
        <main>
