@@ -33,23 +33,41 @@ class App extends Component {
     super(props);
     this.state = {
       city: "",
-      data: []
+      data: [],
+      temp2: [],
+      tempMax: null,
+      tempMin: null
+
     };
   }
+  
 
   handleInput = value => {
-    this.setState({ city: value });
-
-    fetch('http://api.openweathermap.org/data/2.5/forecast?q='+ this.state.city +'&cnt=8&units=metric&appid=1c8fd00f3175ad6533e188b48cfd370f')
-      .then(res => res.json())
-      .then(json => this.setState.data({ data: json }));
-  };
+   // this.setState({ city: value });
+    
+     fetch('http://api.openweathermap.org/data/2.5/forecast?q='+value+'&cnt=8&units=metric&appid=1c8fd00f3175ad6533e188b48cfd370f')
+    .then(res => res.json())
+    
+    .then(json => this.setState({temp2 :json.list,
+                                tempMin :json.list[0].main.temp,
+                                tempMax :json.list[7].main.temp},
+                
+        ))
+ 
+    // .then(json => this.setState({temp2 :json.list[7].main.temp}));
+};
+  // handleInputchange = value2 =>{
+  //   this.setState({ city2: value2});
   
-  componentDidMount() {
-    fetch('http://api.openweathermap.org/data/2.5/forecast?q=London&cnt=8&units=metric&appid=1c8fd00f3175ad6533e188b48cfd370f')
-      .then(res => res.json())
-      .then(json => console.log(json));
-  }
+
+   
+  // };
+  
+  // componentDidMount() {
+  //   fetch('http://api.openweathermap.org/data/2.5/forecast?q=London&cnt=8&units=metric&appid=1c8fd00f3175ad6533e188b48cfd370f')
+  //     .then(res => res.json())
+  //     .then(json => console.log(json));
+  // }
 
   render() {
     return (
@@ -66,8 +84,10 @@ class App extends Component {
      
          </nav>
        </header>
-       <Temprature />
-       <WeatherItem data={this.state.data}/>
+       <Temprature tempMax={this.state.tempMax}
+                  tempMin={this.state.tempMin}
+                        />
+       <WeatherItem temp2={this.state.temp2}/>
        {/* ---------Main-------------- */} 
 
        <main>
