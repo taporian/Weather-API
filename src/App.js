@@ -98,9 +98,6 @@ weatherIcons=(id) =>{
 
 }
 };
-
-
-
    render() {
     return (
       <div className="app">
