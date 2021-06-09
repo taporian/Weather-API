@@ -5,18 +5,11 @@ import FakeWeather from  '../fakeWeatherData.json';
 import storm from "../img/weather-icons/storm.svg";
 import "../components/WeatherItem.css";
 import "../App";
-
-
-
 export default class WeatherItem extends Component {
   render() {
-    
-    
-
-    return <ul className="wea-ther">
-     
+  return <ul className="wea-ther">  
         {this.props.temp2.map(chris =>
-    
+   
     <li>
       <div className="res-grid"><h3>{chris.dt_txt}</h3>
            <img src={this.props.weatherIcons(this.props.id)} />

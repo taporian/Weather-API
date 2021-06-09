@@ -1,10 +1,8 @@
 
 import React, { Component } from "react";
 import Search from "../src/components/Search";
-
 import sayHi, {SayHello} from "./components/WeatherItem"
 import Temprature from "./components/Temprature"
-
 import "./App.css";
 import WeatherItem from "../src/components/WeatherItem";
 import storm from "./img/weather-icons/storm.svg";
@@ -35,9 +33,6 @@ class App extends Component {
     };
     
   }
- 
- 
-
   handleInput = value => {
 
     
@@ -45,9 +40,7 @@ class App extends Component {
     .then(res => { if(!res.ok){
       throw Error ('Could not fetch');
     }
-      return res.json()} )
-    
-    
+      return res.json()} )   
     .then(json => this.setState({temp2 :json.list,
                                 tempMin :json.list[0].main.temp,
                                 tempMax :json.list[7].main.temp,
@@ -60,13 +53,7 @@ class App extends Component {
         )).catch(err =>{
           console.log(err.message);
         })
-    
-      
-  
-
 }
-
-
 weatherIcons=(id) =>{
   switch(true) {
   case (id<300):
@@ -105,14 +92,10 @@ weatherIcons=(id) =>{
 };
    render() {
     return (
-      <div className="app">
-        
-       {/* ---------Header-------------- */} 
-       
-       <header className="app_header">
-         
-         <nav>
-           
+      <div className="app">   
+       {/* ---------Header-------------- */}  
+       <header className="app_header">    
+         <nav>      
            <Search  handleInput={this.handleInput}/>
            <SayHello color="black" city={this.state.city} />
      
@@ -129,16 +112,11 @@ weatherIcons=(id) =>{
                     temp2={this.state.temp2}
                     id = {this.state.id}/>
        {/* ---------Main-------------- */} 
-
        <main>
-       
-
         {/* -----------Ul------------ */} 
-        <div  >
-          
+        <div  >     
         </div>
-       </main>
-        
+       </main>     
       </div>
     );
   }
