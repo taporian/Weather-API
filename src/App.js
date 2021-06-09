@@ -17,14 +17,10 @@ import partlycloudy from "./img/weather-icons/partlycloudy.svg";
 import mostlycloudy from "./img/weather-icons/mostlycloudy.svg";
 import unknown from "./img/weather-icons/unknown.svg";
 
-
-
-
-
-
 class App extends Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       city: "",
       data: [],
@@ -37,14 +33,20 @@ class App extends Component {
       humidity:null
 
     };
+    
   }
-  
+ 
+ 
 
   handleInput = value => {
 
     
      fetch('http://api.openweathermap.org/data/2.5/forecast?q='+value+'&cnt=8&units=metric&appid=1c8fd00f3175ad6533e188b48cfd370f')
-    .then(res => res.json())
+    .then(res => { if(!res.ok){
+      throw Error ('Could not fetch');
+    }
+      return res.json()} )
+    
     
     .then(json => this.setState({temp2 :json.list,
                                 tempMin :json.list[0].main.temp,
@@ -55,12 +57,15 @@ class App extends Component {
                                 
                               },
                               console.log(json.list[0].weather[0].id)
-        ))
+        )).catch(err =>{
+          console.log(err.message);
+        })
     
       
   
 
-};
+}
+
 
 weatherIcons=(id) =>{
   switch(true) {
