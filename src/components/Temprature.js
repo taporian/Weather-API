@@ -12,9 +12,9 @@ export default class  Temprature extends Component {
           
         <div className="app__main">
           
-        <div className="imagee"> <img src={clear}  /> </div>
+        <div className="imagee"> <img src={this.props.weatherIcons(this.props.id)} /></div>
         <h2>Temperature  <span>&#176;</span> {this.props.tempMin} to {this.props.tempMax}<span>&#8451;</span></h2>
-        <p><span style={{fontWeight:"bold" , marginRight:"1rem"}}>Humidity</span> 78%  <span style = {{fontWeight:"bold" , margin:"0 1rem"}}>Pressure</span> 1000.8</p>
+        <p><span style={{fontWeight:"bold" , marginRight:"1rem"}}>Humidity</span> {this.props.humidity}  <span style = {{fontWeight:"bold" , margin:"0 1rem"}}>Pressure</span> {this.props.pressure}</p>
       </div>
         );
     }

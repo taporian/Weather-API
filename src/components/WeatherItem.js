@@ -6,17 +6,25 @@ import storm from "../img/weather-icons/storm.svg";
 import "../components/WeatherItem.css";
 import "../App";
 
+
+
 export default class WeatherItem extends Component {
   render() {
+    
+    
+
     return <ul className="wea-ther">
+     
         {this.props.temp2.map(chris =>
     
     <li>
       <div className="res-grid"><h3>{chris.dt_txt}</h3>
-         <img src={storm} />
+           <img src={this.props.weatherIcons(this.props.id)} />
+         {/* <img src={storm} /> */}
          <h3>{chris.main.temp} <span>&#8451;</span></h3></div>
      </li>
-       )}     
+       )}    
+  
   </ul>
   }
 }
